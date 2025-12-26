@@ -14,4 +14,3 @@ int main(int ac, char **av)
     while (arr[i++])
         ft_lstadd_back(&head, ft_lstnew(ft_atoi(arr[i])));
 }
-
