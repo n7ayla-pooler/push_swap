@@ -13,6 +13,17 @@ int main(int ac, char **av)
     head = NULL;
     while (arr[i])
         ft_lstadd_back(&head, ft_lstnew(ft_atoi(arr[i++])));
+    i = 0;
+    while (arr[i])
+        free(arr[i++]);
+    free(arr);
+    push_swap(head, ft_lstnew(0));
+    while (head)
+    {
+        printf("%d\n", head->num);
+        head = head->next;
+    }
+    
 }
 
 void rr(t_list *stack_a, t_list *stack_b)
@@ -22,16 +33,16 @@ void rr(t_list *stack_a, t_list *stack_b)
     write(1, "rr\n", 3);
 }
 
-void bubble_sort(t_list *head)
+void bubble_sort(t_list **head)
 {
     t_list *curr;
     t_list *tmp;
     int numb;
 
-    curr = head;
+    curr = *head;
     while (curr->next)
     {
-        tmp = head;
+        tmp = *head;
         while (tmp->next)
         {
             if (tmp->num > tmp->next->num)

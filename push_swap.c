@@ -3,7 +3,9 @@
 void    push_swap(t_list *stack_a, t_list *stack_b)
 {
     if (ft_lstsize(stack_a) <= 5)
-        bubble_sort(stack_a);
+        bubble_sort(&stack_a);
+    ft_lstclear(&stack_a);
+    ft_lstclear(&stack_b);
 }
 
 void push(t_list *stack_a, t_list *stack_b, char c)
@@ -56,18 +58,18 @@ void ss(t_list *stack_a, t_list *stack_b)
     write(1, "ss\n", 3);
 }
 
-int main()
-{
-    t_list *head;
-    t_list bar;
-    t_list bare;
-    t_list bared;
-    t_list bareda;
+// int main()
+// {
+//     t_list *head;
+//     t_list bar;
+//     t_list bare;
+//     t_list bared;
+//     t_list bareda;
 
-    bar.next = &bare;
-    bare.next = &bared;
-    bared.next = &bareda;
-    bareda.next = NULL;
-    head = &bar;
-    sa(head);
-}
+//     bar.next = &bare;
+//     bare.next = &bared;
+//     bared.next = &bareda;
+//     bareda.next = NULL;
+//     head = &bar;
+//     sa(head);
+// }

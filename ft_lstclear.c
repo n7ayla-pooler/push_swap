@@ -12,17 +12,16 @@
 
 #include "push_swap.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+void	ft_lstclear(t_list **lst)
 {
 	t_list	*curr;
 
-	if (!lst || !(*lst) || !del)
+	if (!lst || !(*lst))
 		return ;
 	while (*lst)
 	{
 		curr = *lst;
 		*lst = (*lst)->next;
-		del(curr->content);
 		free(curr);
 	}
 	*lst = NULL;
