@@ -24,6 +24,11 @@ void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
 int	ft_atoi(const char *nptr);
+void ss(t_list *stack_a, t_list *stack_b);
+void rotate(t_list *head, char c);
+void    swap(t_list *head, char c);
+void push(t_list *stack_a, t_list *stack_b, char c);
+void bubble_sort(t_list *head);
 
 
 #endif
