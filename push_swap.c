@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abdnahal <abdnahal@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/05 14:19:49 by abdnahal          #+#    #+#             */
+/*   Updated: 2026/01/05 14:19:50 by abdnahal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void    push_swap(t_list **stack_a, t_list **stack_b)
 {
-    if (ft_lstsize(*stack_a) <= 5)
-        small_sort(stack_a, stack_b);
-    // ft_lstclear(&stack_a);
-    // ft_lstclear(&stack_b);
+    if (ft_lstsize(*stack_a) == 3)
+        sort_3(stack_a);
+    else if(ft_lstsize(*stack_a) <= 5)
+        sort_5(stack_a, stack_b);
 }
 
 void push(t_list **stack_a, t_list **stack_b, char c)

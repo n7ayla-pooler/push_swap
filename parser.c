@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: abdnahal <abdnahal@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/05 14:19:56 by abdnahal          #+#    #+#             */
+/*   Updated: 2026/01/05 14:32:13 by abdnahal         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int main(int ac, char **av)
@@ -18,41 +30,62 @@ int main(int ac, char **av)
         free(arr[i++]);
     free(arr);
     push_swap(&head, NULL);
-    while (head)
+}
+
+int is_sorted(t_list *stack)
+{
+    while (stack->next)
     {
-        printf("%d\n", head->num);
-        head = head->next;
+        if (stack->num > stack->next->num)
+            return (0);
+        stack = stack->next;
     }
-    
+    return (1);
+}
+
+void reverse_rotate(t_list **stack, char c)
+{
+    t_list *tmp;
+
+    tmp = *stack; 
+    while (tmp->next->next)
+        tmp = tmp->next;
+    tmp->next->next = *stack;
+    tmp->next = NULL;
+    if (c == 'a')
+        write(1, "rra\n", 4);
+    else 
+        write(1, "rrb\n", 4);
 }
 
 void rr(t_list **stack_a, t_list **stack_b)
 {
-    rotate(stack_a, 'n');
-    rotate(stack_b, 'n');
+    rotate(stack_a, 'a');
+    rotate(stack_b, 'b');
     write(1, "rr\n", 3);
 }
 
-void small_sort(t_list **stack_a, t_list **stack_b)
+void sort_3(t_list **stack_a)
 {
-    int swapped;
-    t_list **p;
+    t_list *tmp;
 
-    if (!stack_a || !*stack_a)
-        return;
-    do
+    if (is_sorted(*stack_a))
+        return ;
+    tmp = *stack_a;
+    if (tmp->num > tmp->next->num && tmp->num < tmp->next->next->num)
+        swap(stack_a, 'a');
+    else if (tmp->num > tmp->next->num && tmp->next->num > tmp->next->next->num)
     {
-        swapped = 0;
-        p = stack_a;
-        while (*p && (*p)->next)
-        {
-            if ((*p)->num > (*p)->next->num)
-            {
-                swap(p, 'a');
-                swapped = 1;
-            }
-            /* advance p to the next node's pointer (works after swap or not) */
-            p = &((*p)->next);
-        }
-    } while (swapped);
+        swap(stack_a, 'a');
+        reverse_rotate(stack_a, 'a');
+    }
+    else if (tmp->num > tmp->next->num && tmp->next->next->num > tmp->next->num)
+        rotate(stack_a, 'a');
+    else if (tmp->num < tmp->next->num && tmp->num < tmp->next->next->num)
+    {
+        swap(stack_a, 'a');
+        rotate(stack_a, 'a');
+    }
+    else if (tmp->num < tmp->next->num && tmp->num > tmp->next->next->num)
+        reverse_rotate(stack_a, 'a');
 }

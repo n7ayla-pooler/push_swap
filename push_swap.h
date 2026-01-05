@@ -28,8 +28,11 @@ void ss(t_list **stack_a, t_list **stack_b);
 void rotate(t_list **head, char c);
 void   swap(t_list **head, char c);
 void push(t_list **stack_a, t_list **stack_b, char c);
-void small_sort(t_list **stack_a, t_list **stack_b);
+void sort_3(t_list **stack_a);
 void    push_swap(t_list **stack_a, t_list **stack_b);
+void reverse_rotate(t_list **stack, char c);
+int is_sorted(t_list *stack);
+void sort_5(t_list **stack_a, t_list **stack_b);
 
 
 #endif
