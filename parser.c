@@ -6,7 +6,7 @@
 /*   By: abdnahal <abdnahal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 14:19:56 by abdnahal          #+#    #+#             */
-/*   Updated: 2026/01/07 14:49:27 by abdnahal         ###   ########.fr       */
+/*   Updated: 2026/01/07 17:27:58 by abdnahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int main(int ac, char **av)
     int i;
     char **arr;
     t_list *head;
+    t_list *stack_b;
 
     if (ac < 2)
         return (0);
@@ -30,7 +31,8 @@ int main(int ac, char **av)
         free(arr[i++]);
     free(arr);
     indexing(head);
-    push_swap(&head, NULL);
+    stack_b = NULL;
+    push_swap(&head, &stack_b);
 }
 
 int is_sorted(t_list *stack)

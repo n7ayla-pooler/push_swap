@@ -6,7 +6,7 @@
 /*   By: abdnahal <abdnahal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 14:17:57 by abdnahal          #+#    #+#             */
-/*   Updated: 2026/01/07 16:53:10 by abdnahal         ###   ########.fr       */
+/*   Updated: 2026/01/07 17:29:47 by abdnahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,12 @@
 
 t_list *max_index(t_list *stack)
 {
-    int index;
     t_list *p;
+
     while (stack)
     {
         if (stack->next && stack->index > stack->next->index)
         {
-            index = stack->index;
             p = stack;
         }
         stack = stack->next;
