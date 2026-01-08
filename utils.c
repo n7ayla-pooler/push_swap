@@ -6,29 +6,24 @@
 /*   By: abdnahal <abdnahal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 14:17:57 by abdnahal          #+#    #+#             */
-/*   Updated: 2026/01/08 11:54:46 by abdnahal         ###   ########.fr       */
+/*   Updated: 2026/01/08 16:02:29 by abdnahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list *max_index(t_list *stack)
+int max_index(t_list *stack)
 {
-    t_list *p;
     int max;
 
     max = 0;
-    p = NULL;
     while (stack)
     {
         if (stack->index >= max)
-        {
             max = stack->index;
-            p = stack;
-        }
         stack = stack->next;
     }
-    return (p);
+    return (max);
 }
 
 void sort_5(t_list **stack_a, t_list **stack_b)
@@ -90,17 +85,29 @@ void    sort_push_a(t_list **stack_a, t_list **stack_b, int min, int max)
 
 void sort_push_b(t_list **stack_a, t_list **stack_b)
 {
-    t_list *max;
+    int max;
     
     while (*stack_b)
     {
         max = max_index(*stack_b);
-        while (max && *stack_b != max)
+        while ((*stack_b)->index != max)
         {
-            while (ft_lstsize(*stack_b) - ft_lstsize(max) > (ft_lstsize(*stack_b) / 2))
+            
+            if (ft_lstsize(*stack_b) - ft_lstsize(locate_index(*stack_b, max)) > (ft_lstsize(*stack_b) / 2))
                 reverse_rotate(stack_b, 'b');
             rotate(stack_b, 'b');
         }
         push(stack_a, stack_b, 'a');
     }
+}
+
+t_list *locate_index(t_list *head, int index)
+{
+    while (head)
+    {
+        if(head->index == index)
+            return(head);
+        head = head->next;        
+    }
+    return (NULL);
 }
