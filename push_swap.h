@@ -38,6 +38,6 @@ void indexing(t_list *stack);
 int max_index(t_list *stack);
 void sort_push_b(t_list **stack_a, t_list **stack_b);
 void    sort_push_a(t_list **stack_a, t_list **stack_b, int min, int max);
-
+t_list *locate_index(t_list *head, int index);
 
 #endif
