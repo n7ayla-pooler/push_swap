@@ -6,7 +6,7 @@
 /*   By: abdnahal <abdnahal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 14:19:56 by abdnahal          #+#    #+#             */
-/*   Updated: 2026/01/08 17:20:43 by abdnahal         ###   ########.fr       */
+/*   Updated: 2026/01/09 15:07:21 by abdnahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,18 @@ int is_sorted(t_list *stack)
 void reverse_rotate(t_list **stack, char c)
 {
     t_list *tmp;
+    t_list *temp;
 
+    if (!stack || !*stack || !(*stack)->next)
+        return ;
+    
     tmp = *stack; 
     while (tmp->next->next)
         tmp = tmp->next;
+    temp = tmp->next;
     tmp->next->next = *stack;
     tmp->next = NULL;
+    *stack = temp;
     if (c == 'a')
         write(1, "rra\n", 4);
     else 
