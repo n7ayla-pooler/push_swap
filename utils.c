@@ -6,7 +6,7 @@
 /*   By: abdnahal <abdnahal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 14:17:57 by abdnahal          #+#    #+#             */
-/*   Updated: 2026/01/08 17:25:39 by abdnahal         ###   ########.fr       */
+/*   Updated: 2026/01/09 11:19:57 by abdnahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,25 +60,26 @@ void indexing(t_list *stack)
 
 void    sort_push_a(t_list **stack_a, t_list **stack_b, int min, int max)
 {
-    t_list *curr;
-
     while (*stack_a)
     {
-        curr = *stack_a;
-        if (curr->index >= min && curr->index <= max)
+        while (*stack_a && is_in(*stack_a, min, max))
         {
-            if (curr->index < max - min / 2)
+            if ((*stack_a)->index >= min && (*stack_a)->index <= max)
             {
-                push(stack_a, stack_b, 'b');
-                if (ft_lstsize(*stack_b) >= 2)
-                    rotate(stack_b, 'b');
+                if ((*stack_a)->index < max - min / 2)
+                {
+                    push(stack_a, stack_b, 'b');
+                    if (ft_lstsize(*stack_b) >= 2)
+                        rotate(stack_b, 'b');
+                }
+                else
+                    push(stack_a, stack_b, 'b');
             }
             else
-                push(stack_a, stack_b, 'b');
-            min++;
-            max++;
+                rotate(stack_a, 'a');
         }
-        rotate(stack_a, 'a');
+        min++;
+        max++;
     }
 }
 
