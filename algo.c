@@ -6,7 +6,7 @@
 /*   By: abdnahal <abdnahal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 14:17:57 by abdnahal          #+#    #+#             */
-/*   Updated: 2026/01/09 17:03:24 by abdnahal         ###   ########.fr       */
+/*   Updated: 2026/01/11 15:58:36 by abdnahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,26 +62,21 @@ void    sort_push_a(t_list **stack_a, t_list **stack_b, int min, int max)
 {
     while (*stack_a)
     {
-        while (*stack_a && is_in(*stack_a, min, max))
+        if ((*stack_a)->index >= min && (*stack_a)->index <= max)
         {
-            if ((*stack_a)->index >= min && (*stack_a)->index <= max)
-            {
-                if ((*stack_a)->index < (max - min) / 2)
-                {
-                    push(stack_a, stack_b, 'b');
-                    if (ft_lstsize(*stack_b) >= 2)
-                        rotate(stack_b, 'b');
-                }
-                else
-                    push(stack_a, stack_b, 'b');
-            }
-            else if (get_pos_range(*stack_a, min, max) <= ft_lstsize(*stack_a) / 2)
-                rotate(stack_a, 'a');
-            else
-                reverse_rotate(stack_a, 'a');
+            push(stack_a, stack_b, 'b');
+            min++;
+            max++;
         }
-        min++;
-        max++;
+        else if ((*stack_a)->index < min)
+        {
+            push(stack_a, stack_b, 'b');
+            rotate(stack_b, 'b');
+            min++;
+            max++;
+        }
+        else    
+            rotate(stack_a, 'a');
     }
 }
 
@@ -91,9 +86,9 @@ void sort_push_b(t_list **stack_a, t_list **stack_b)
     int b_size;
     int pos;
 
+    max = ft_lstsize(*stack_b) - 1; 
     while (*stack_b)
     {
-        max = max_index(*stack_b);
         b_size = ft_lstsize(*stack_b);
         pos = get_pos(*stack_b, max);
         if (pos >= b_size / 2)
@@ -107,5 +102,6 @@ void sort_push_b(t_list **stack_a, t_list **stack_b)
                 rotate(stack_b, 'b');
         }
         push(stack_a, stack_b, 'a');
+        max--;
     }
 }

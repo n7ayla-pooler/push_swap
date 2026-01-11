@@ -6,7 +6,7 @@
 /*   By: abdnahal <abdnahal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 17:18:11 by abdnahal          #+#    #+#             */
-/*   Updated: 2026/01/09 16:59:06 by abdnahal         ###   ########.fr       */
+/*   Updated: 2026/01/11 15:54:58 by abdnahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int get_pos(t_list *stack, int index)
         if (stack->index == index)
             return (pos);
         stack = stack->next;
+        pos++;
     }
     return (-1);
 }
