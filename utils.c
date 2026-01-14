@@ -6,48 +6,37 @@
 /*   By: abdnahal <abdnahal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 17:18:11 by abdnahal          #+#    #+#             */
-/*   Updated: 2026/01/11 15:54:58 by abdnahal         ###   ########.fr       */
+/*   Updated: 2026/01/14 13:20:15 by abdnahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list *locate_index(t_list *head, int index)
+void sort_3(t_list **stack_a)
 {
-    while (head)
+    t_list *tmp;
+
+    if (is_sorted(*stack_a))
+        return ;
+    tmp = *stack_a;
+    if (tmp->num > tmp->next->num && tmp->num < tmp->next->next->num)
+        swap(stack_a, 'a');
+    else if (tmp->num > tmp->next->num && tmp->next->num > tmp->next->next->num)
     {
-        if(head->index == index)
-            return(head);
-        head = head->next;        
+        swap(stack_a, 'a');
+        reverse_rotate(stack_a, 'a');
     }
-    return (NULL);
+    else if (tmp->num > tmp->next->num && tmp->next->next->num > tmp->next->num)
+        rotate(stack_a, 'a');
+    else if (tmp->num < tmp->next->num && tmp->num < tmp->next->next->num)
+    {
+        swap(stack_a, 'a');
+        rotate(stack_a, 'a');
+    }
+    else if (tmp->num < tmp->next->num && tmp->num > tmp->next->next->num)
+        reverse_rotate(stack_a, 'a');
 }
 
-int    is_in(t_list *stack, int min, int max)
-{
-    while (stack)
-    {
-        if (stack->index >= min && stack->index <= max)
-            return (1);
-        stack = stack->next;
-    }
-    return (0);
-}
-
-int get_pos_range(t_list *stack, int min, int max)
-{
-    int pos;
-
-    pos = 0;
-    while (stack)
-    {
-        if(stack->index >= min && stack->index <= max)
-            return (pos);
-        pos++;
-        stack = stack->next;
-    }
-    return (-1);
-}
 
 int get_pos(t_list *stack, int index)
 {

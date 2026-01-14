@@ -6,7 +6,7 @@
 /*   By: abdnahal <abdnahal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 14:19:49 by abdnahal          #+#    #+#             */
-/*   Updated: 2026/01/12 14:24:01 by abdnahal         ###   ########.fr       */
+/*   Updated: 2026/01/14 11:39:01 by abdnahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,18 +32,16 @@ void    push_swap(t_list **stack_a, t_list **stack_b)
     ft_lstclear(stack_b);
 }
 
-void push(t_list **stack_a, t_list **stack_b, char c)
+void push(t_list **stack_a, t_list **stack_b, char c, char flag)
 {
     if (c == 'a')
-    {
         ft_lstadd_front(stack_a, stack_b);
-        write(1, "pa\n", 3);
-    }
-    else
-    {
+    else if (c == 'b')
         ft_lstadd_front(stack_b, stack_a);
+    if (flag == 'a')
+        write(1, "pa\n", 3);
+    else if (flag == 'b')
         write(1, "pb\n", 3);
-    }
 }
 
 void    swap(t_list **head, char c)
@@ -80,11 +78,12 @@ void rotate(t_list **head, char c)
         write(1, "rb\n", 3);
 }
 
-void ss(t_list **stack_a, t_list **stack_b)
+void ss(t_list **stack_a, t_list **stack_b, char c)
 {
     swap(stack_a, 'a');
     swap(stack_b, 'b');
-    write(1, "ss\n", 3);
+    if (c == 's')
+        write(1, "ss\n", 3);
 }
 
 // int main()

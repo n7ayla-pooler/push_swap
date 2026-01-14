@@ -6,7 +6,7 @@
 /*   By: abdnahal <abdnahal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 14:17:57 by abdnahal          #+#    #+#             */
-/*   Updated: 2026/01/11 15:58:36 by abdnahal         ###   ########.fr       */
+/*   Updated: 2026/01/14 12:05:27 by abdnahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ void sort_5(t_list **stack_a, t_list **stack_b)
 {
     if (is_sorted(*stack_a))
         return ;
-    push(stack_a, stack_b, 'b');
-    push(stack_a, stack_b, 'b');
+    push(stack_a, stack_b, 'b', 'b');
+    push(stack_a, stack_b, 'b', 'b');
     sort_3(stack_a);
-    push(stack_a, stack_b, 'a');
+    push(stack_a, stack_b, 'a', 'a');
     sort_3(stack_a);
-    push(stack_a, stack_b, 'a');
+    push(stack_a, stack_b, 'a', 'a');
 }
 
 void indexing(t_list *stack)
@@ -64,13 +64,13 @@ void    sort_push_a(t_list **stack_a, t_list **stack_b, int min, int max)
     {
         if ((*stack_a)->index >= min && (*stack_a)->index <= max)
         {
-            push(stack_a, stack_b, 'b');
+            push(stack_a, stack_b, 'b', 'b');
             min++;
             max++;
         }
         else if ((*stack_a)->index < min)
         {
-            push(stack_a, stack_b, 'b');
+            push(stack_a, stack_b, 'b', 'b');
             rotate(stack_b, 'b');
             min++;
             max++;
@@ -101,7 +101,7 @@ void sort_push_b(t_list **stack_a, t_list **stack_b)
             while ((*stack_b)->index != max)
                 rotate(stack_b, 'b');
         }
-        push(stack_a, stack_b, 'a');
+        push(stack_a, stack_b, 'a', 'a');
         max--;
     }
 }
