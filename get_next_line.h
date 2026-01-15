@@ -32,6 +32,6 @@ char	*get_next_line(int fd);
 char	*ft_strdup(const char *s);
 int		ft_strchr(const char *s, char c);
 char	*extract_line(char **save);
-int	ft_strncmp(const char *s1, const char *s2, size_t n);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
 #endif

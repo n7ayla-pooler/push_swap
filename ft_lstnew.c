@@ -6,14 +6,19 @@
 /*   By: abdnahal <abdnahal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/19 10:24:58 by abdnahal          #+#    #+#             */
-/*   Updated: 2025/10/19 13:08:40 by abdnahal         ###   ########.fr       */
+/*   Updated: 2026/01/15 12:45:37 by abdnahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list	*ft_lstnew(int num)
+t_list	*ft_lstnew(long num)
 {
+	if (num > INT_MAX || num < INT_MIN)
+	{
+		write(2, "Error", 5);
+		exit(EXIT_FAILURE);
+	}
 	t_list	*new;
 
 	new = malloc(sizeof(t_list));

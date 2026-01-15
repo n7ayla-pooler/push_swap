@@ -1,7 +1,7 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-SRC = ft_atoi.c ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstlast.c ft_lstnew.c ft_lstsize.c ft_split.c parser.c push_swap.c utils.c algo.c main.c
-B_SRC = checker.c get_next_line.c get_next_line_utils.c ft_atoi.c ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstlast.c ft_lstnew.c ft_lstsize.c ft_split.c push_swap.c main.c algo.c utils.c
+SRC = ft_atoi.c ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstlast.c ft_lstnew.c ft_lstsize.c ft_split.c parser.c push_swap.c utils.c algo.c main.c moves.c
+B_SRC = checker.c get_next_line.c get_next_line_utils.c ft_atoi.c ft_lstadd_back.c ft_lstadd_front.c ft_lstclear.c ft_lstlast.c ft_lstnew.c ft_lstsize.c ft_split.c main.c moves.c utils.c
 RM = rm -f
 OBJ = $(SRC:.c=.o)
 B_OBJS = $(B_SRC:.c=.o)
