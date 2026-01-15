@@ -6,7 +6,7 @@
 /*   By: abdnahal <abdnahal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 14:19:49 by abdnahal          #+#    #+#             */
-/*   Updated: 2026/01/15 11:52:53 by abdnahal         ###   ########.fr       */
+/*   Updated: 2026/01/15 17:03:42 by abdnahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	push_swap(t_list **stack_a, t_list **stack_b)
 {
-	if (is_sorted(*stack_a))
+	if (is_sorted(*stack_a) || (*stack_a) == NULL)
 		return ;
 	if (ft_lstsize(*stack_a) == 2)
 		swap(stack_a, 'a');

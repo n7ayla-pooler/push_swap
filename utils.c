@@ -6,7 +6,7 @@
 /*   By: abdnahal <abdnahal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 17:18:11 by abdnahal          #+#    #+#             */
-/*   Updated: 2026/01/15 11:51:34 by abdnahal         ###   ########.fr       */
+/*   Updated: 2026/01/15 16:58:05 by abdnahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ void	free_all(char **arr)
 	int	i;
 
 	i = 0;
+	if (!arr || !arr[0])
+		return ;
 	while (arr[i])
 		free(arr[i++]);
 	free(arr);

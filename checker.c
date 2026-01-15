@@ -6,7 +6,7 @@
 /*   By: abdnahal <abdnahal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 12:13:17 by abdnahal          #+#    #+#             */
-/*   Updated: 2026/01/15 11:38:08 by abdnahal         ###   ########.fr       */
+/*   Updated: 2026/01/15 18:10:48 by abdnahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void	checker3(t_list **stack_a, t_list **stack_b, char *str)
 		ft_lstclear(stack_a);
 		ft_lstclear(stack_b);
 		free(str);
-		write(2, "Error\n", 6);
+		write(2, "Error", 6);
 		exit(1);
 	}
 }

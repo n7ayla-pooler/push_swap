@@ -6,7 +6,7 @@
 /*   By: abdnahal <abdnahal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/15 06:53:32 by abdnahal          #+#    #+#             */
-/*   Updated: 2026/01/15 16:09:37 by abdnahal         ###   ########.fr       */
+/*   Updated: 2026/01/15 18:10:37 by abdnahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ long	ft_atoi(const char *nptr)
 		}
 		while (nptr[i] >= '0' && nptr[i] <= '9')
 			nbr = nbr * 10 + nptr[i++] - '0';
-		if (!(nptr[i] >= '0' && nptr[i] <= '9'))
-        {
-            write(2, "ERROR", 5);
-            exit(1);
-        }
+		if (nptr[i] && !(nptr[i] >= '0' && nptr[i] <= '9'))
+		{
+			write(2, "Error", 5);
+			exit(1);
+		}
 		break ;
 	}
 	return (nbr * sign);

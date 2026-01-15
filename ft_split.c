@@ -6,7 +6,7 @@
 /*   By: abdnahal <abdnahal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 11:47:58 by abdnahal          #+#    #+#             */
-/*   Updated: 2026/01/14 11:47:59 by abdnahal         ###   ########.fr       */
+/*   Updated: 2026/01/15 16:46:46 by abdnahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,10 +116,10 @@ char	**ft_split(char *str, char *charset)
 	count = count_words(str, charset);
 	arr = malloc((count + 1) * sizeof(char *));
 	if (arr == NULL)
-	{
 		return (NULL);
-	}
 	count_all(arr, str, charset);
 	fill_arr(arr, str, charset);
+	if (!arr[0])
+		return (NULL);
 	return (arr);
 }

@@ -14,13 +14,13 @@
 
 t_list	*ft_lstnew(long num)
 {
+	t_list	*new;
+
 	if (num > INT_MAX || num < INT_MIN)
 	{
 		write(2, "Error", 5);
 		exit(EXIT_FAILURE);
 	}
-	t_list	*new;
-
 	new = malloc(sizeof(t_list));
 	if (!new)
 		return (NULL);
