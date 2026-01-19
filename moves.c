@@ -6,7 +6,7 @@
 /*   By: abdnahal <abdnahal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 17:09:31 by abdnahal          #+#    #+#             */
-/*   Updated: 2026/01/18 09:46:34 by abdnahal         ###   ########.fr       */
+/*   Updated: 2026/01/19 16:14:53 by abdnahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,18 @@ void	rotate(t_list **head, char c)
 
 void	ss(t_list **stack_a, t_list **stack_b, char c)
 {
-	swap(stack_a, 'a');
-	swap(stack_b, 'b');
 	if (c == 's')
+	{
+		swap(stack_a, 'a');
+		swap(stack_b, 'b');
 		write(1, "ss\n", 3);
+	}
+	else
+	{
+		swap(stack_a, 'x');
+		swap(stack_b, 'x');
+	}
+		
 }
 
 void	ft_error(t_list **stack, char **arr)

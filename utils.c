@@ -6,7 +6,7 @@
 /*   By: abdnahal <abdnahal@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/08 17:18:11 by abdnahal          #+#    #+#             */
-/*   Updated: 2026/01/16 16:54:29 by abdnahal         ###   ########.fr       */
+/*   Updated: 2026/01/19 15:59:17 by abdnahal         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,15 @@ void	free_all(char **arr)
 	while (arr[i])
 		free(arr[i++]);
 	free(arr);
+}
+
+int reverse_sorted(t_list *stack)
+{
+	while (stack->next)
+	{
+		if (stack->num < stack->next->num)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
 }
